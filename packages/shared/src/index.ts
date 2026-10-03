@@ -197,7 +197,7 @@ export interface ServerToClientEvents {
   turn_started: (data: { playerId: string; turnIndex: number; phaseEndsAt: number }) => void;
   draw_update: (data: { stroke: Stroke }) => void;
   draw_undo_applied: (data: { playerId: string; strokeId: string }) => void;
-  turn_ended: (data: { playerId: string }) => void;
+  turn_ended: (data: { playerId: string; didDraw?: boolean }) => void;
   discussion_started: (data: { phaseEndsAt: number }) => void;
   voting_started: (data: { phaseEndsAt: number }) => void;
   vote_progress: (data: { votedCount: number; totalCount: number }) => void;
