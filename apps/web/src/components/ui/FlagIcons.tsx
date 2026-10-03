@@ -63,3 +63,15 @@ export function FRFlag({ className = 'w-5 h-3.5' }: { className?: string }) {
     </svg>
   );
 }
+
+export function ARFlag({ className = 'w-5 h-3.5' }: { className?: string }) {
+  return (
+    <svg className={`rounded-sm inline-block shrink-0 ${className}`} viewBox="0 0 6 3">
+      <rect width="6" height="1" fill="#007A3D" />
+      <rect width="6" height="1" y="1" fill="#FFFFFF" />
+      <rect width="6" height="1" y="2" fill="#000000" />
+      <rect width="1.5" height="3" fill="#CE1126" />
+    </svg>
+  );
+}
+

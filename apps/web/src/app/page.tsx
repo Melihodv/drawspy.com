@@ -21,7 +21,7 @@ import {
 import { useGameStore } from '@/store/gameStore';
 import { Avatar, AVATAR_PRESETS } from '@/components/ui/Avatar';
 import { LANGUAGES, useTranslation, type LanguageCode } from '@/utils/i18n';
-import { TRFlag, GBFlag, DEFlag, ESFlag, FRFlag } from '@/components/ui/FlagIcons';
+import { TRFlag, GBFlag, DEFlag, ESFlag, FRFlag, ARFlag } from '@/components/ui/FlagIcons';
 import { RoomKeyIcon, MagicPencilIcon, ImpostorDetectorIcon } from '@/components/ui/GameStepIcons';
 import { isProfane } from '@/utils/profanityFilter';
 
@@ -36,6 +36,7 @@ const FLAG_COMPONENTS: Record<LanguageCode, React.FC<{ className?: string }>> = 
   de: DEFlag,
   es: ESFlag,
   fr: FRFlag,
+  ar: ARFlag,
 };
 
 export default function HomePage() {
@@ -367,7 +368,7 @@ export default function HomePage() {
                   <label className="flex items-center gap-1.5 text-xs font-bold text-slate-700 mb-1.5">
                     <Globe className="w-3.5 h-3.5 text-sky-500" /> {t('gameLanguage')}
                   </label>
-                  <div className="grid grid-cols-5 gap-1.5">
+                  <div className="grid grid-cols-6 gap-1.5">
                     {LANGUAGES.map((lang) => {
                       const isSelected = store.language === lang.code;
                       const FlagIcon = FLAG_COMPONENTS[lang.code];

@@ -5,9 +5,11 @@ import { useGameStore } from '@/store/gameStore';
 import { getSocket } from '@/hooks/useSocket';
 import { CountdownTimer } from '@/components/ui/CountdownTimer';
 import { Avatar } from '@/components/ui/Avatar';
+import { useTranslation } from '@/utils/i18n';
 
 export function VotingScreen() {
   const store = useGameStore();
+  const t = useTranslation(store.language);
   const socket = getSocket();
   const myId = store.myPlayerId;
   const players = store.room?.players ?? [];
@@ -40,8 +42,8 @@ export function VotingScreen() {
             <div className="w-20 h-20 mx-auto mb-4 rounded-3xl bg-rose-500/20 border-2 border-rose-500/40 flex items-center justify-center text-rose-400 shadow-2xl shadow-rose-500/20">
               <ShieldAlert className="w-10 h-10" />
             </div>
-            <h2 className="font-black text-4xl text-white mb-2 tracking-wide uppercase">OYLAMA & TARTIŞMA ZAMANI!</h2>
-            <p className="text-slate-400 text-sm">Sence Gizli Impostor Kim?</p>
+            <h2 className="font-black text-4xl text-white mb-2 tracking-wide uppercase">{t('voteTitle')}</h2>
+            <p className="text-slate-400 text-sm">{t('whoIsSpy')}</p>
 
             {store.phaseEndsAt && (
               <div className="mt-4">
@@ -51,7 +53,7 @@ export function VotingScreen() {
 
             {progress && (
               <p className="text-slate-500 text-xs font-bold mt-3">
-                {progress.votedCount} / {progress.totalCount} Oy Kullanıldı
+                {progress.votedCount} / {progress.totalCount} {t('votesSubmitted')}
               </p>
             )}
           </div>
@@ -81,7 +83,7 @@ export function VotingScreen() {
                     <Avatar id={player.avatarId} size="xl" />
                   </div>
                   <p className="font-bold text-white text-sm">{player.nickname}</p>
-                  {isMe && <p className="text-slate-500 text-xs font-semibold mt-1">(Sen)</p>}
+                  {isMe && <p className="text-slate-500 text-xs font-semibold mt-1">({t('you')})</p>}
                   {isVoted && (
                     <motion.div
                       initial={{ scale: 0 }}
@@ -89,7 +91,7 @@ export function VotingScreen() {
                       className="mt-2.5 bg-cyan-400 text-slate-950 text-[11px] font-black rounded-full px-3 py-1 flex items-center gap-1 uppercase tracking-wider shadow-md"
                     >
                       <CheckCircle2 className="w-3.5 h-3.5" />
-                      <span>SENİN OYUN</span>
+                      <span>{t('yourVote')}</span>
                     </motion.div>
                   )}
                 </motion.button>
@@ -103,7 +105,7 @@ export function VotingScreen() {
               animate={{ opacity: 1 }}
               className="text-center text-slate-400 text-xs font-semibold mt-6"
             >
-              Oyunuz gönderildi. Süre bitene kadar oyunuzu değiştirebilirsiniz.
+              {t('voteHelp')}
             </motion.p>
           )}
         </motion.div>
@@ -113,12 +115,12 @@ export function VotingScreen() {
       <div className="w-full lg:w-80 bg-[#0F1C2E] border-t lg:border-t-0 lg:border-l border-slate-800 flex flex-col h-72 lg:h-auto">
         <div className="p-4 border-b border-slate-800 flex items-center gap-2">
           <MessageSquare className="w-4 h-4 text-cyan-400" />
-          <p className="text-white text-xs font-black uppercase tracking-wider">Tartışma & Canlı Sohbet</p>
+          <p className="text-white text-xs font-black uppercase tracking-wider">{t('liveChat')}</p>
         </div>
 
         <div className="flex-1 overflow-y-auto p-4 space-y-3">
           {store.chatMessages.length === 0 ? (
-            <p className="text-slate-500 text-xs text-center py-6">Sohbet henüz başlamadı. Şüphelendiğin kişiyi buraya yaz!</p>
+            <p className="text-slate-500 text-xs text-center py-6">{t('typeMessage')}</p>
           ) : (
             store.chatMessages.map((msg, i) => (
               <div key={i} className="text-xs bg-slate-900/60 p-2.5 rounded-xl border border-slate-800/60">
@@ -134,7 +136,7 @@ export function VotingScreen() {
             value={chatText}
             onChange={(e) => setChatText(e.target.value)}
             onKeyDown={(e) => e.key === 'Enter' && sendChat()}
-            placeholder="Şüpheliyi söyle veya mesaj yaz..."
+            placeholder={t('typeMessage')}
             maxLength={150}
             className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-white focus:border-cyan-400 outline-none"
           />

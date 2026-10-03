@@ -1,6 +1,6 @@
 // ─── Player & Room ───────────────────────────────────────────────────────────
 
-export type Language = 'en' | 'tr' | 'fr' | 'de' | 'ar';
+export type Language = 'en' | 'tr' | 'fr' | 'de' | 'es' | 'ar';
 export type Difficulty = 'easy' | 'medium' | 'hard';
 export type Role = 'normal' | 'spy';
 

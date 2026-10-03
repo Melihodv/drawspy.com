@@ -4,9 +4,11 @@ import { motion } from 'framer-motion';
 import { ShieldAlert, Pencil, Sparkles } from 'lucide-react';
 import { useGameStore } from '@/store/gameStore';
 import { WordVisualGuide } from '@/components/ui/WordVisualGuide';
+import { useTranslation } from '@/utils/i18n';
 
 export function RoleRevealScreen() {
   const store = useGameStore();
+  const t = useTranslation(store.language);
   const isSpy = store.myRole === 'spy';
   const word = store.myWord;
   const categoryHint = store.myCategoryHint;
@@ -42,9 +44,9 @@ export function RoleRevealScreen() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
-                className="font-black text-3xl text-rose-400 mb-3 tracking-wide"
+                className="font-black text-3xl text-rose-400 mb-3 tracking-wide uppercase"
               >
-                SEN GİZLİ IMPOSTOR'SUN!
+                {t('spyRoleTitle')}
               </motion.h2>
 
               <motion.p
@@ -53,9 +55,7 @@ export function RoleRevealScreen() {
                 transition={{ delay: 0.4 }}
                 className="text-slate-300 text-sm leading-relaxed mb-6"
               >
-                Gizli kelimeyi bilmiyorsun!
-                <br />
-                Diğer oyuncuların çizimlerini izle ve çaktırma.
+                {t('spyRoleDesc')}
               </motion.p>
 
               {categoryHint && (
@@ -65,7 +65,7 @@ export function RoleRevealScreen() {
                   transition={{ delay: 0.6 }}
                   className="bg-slate-900 border border-slate-800 rounded-2xl p-4"
                 >
-                  <p className="text-slate-400 text-xs font-bold uppercase tracking-wider mb-1">Kategori İpucu:</p>
+                  <p className="text-slate-400 text-xs font-bold uppercase tracking-wider mb-1">{t('categoryHintLabel')}</p>
                   <p className="font-black text-cyan-400 text-xl capitalize">{categoryHint}</p>
                 </motion.div>
               )}
@@ -76,7 +76,7 @@ export function RoleRevealScreen() {
                 transition={{ delay: 0.8 }}
                 className="text-rose-400/80 text-xs mt-6 font-semibold"
               >
-                Yakalanırsan son bir kelime tahmin hakkın olacak!
+                {t('spyWarning')}
               </motion.p>
             </div>
           </>
@@ -97,12 +97,12 @@ export function RoleRevealScreen() {
                 animate={{ opacity: 1, y: 0 }}
                 className="text-slate-400 text-xs font-bold tracking-widest uppercase mb-2"
               >
-                Gizli Kelimeniz:
+                {t('normalSecretWord')}
               </motion.p>
 
               {word && (
                 <div className="flex flex-col items-center justify-center my-3 bg-slate-900/80 p-4 rounded-2xl border border-amber-500/30">
-                  <p className="text-[10px] text-amber-400 font-extrabold uppercase tracking-widest mb-2">Çizilecek Nesne Görseli</p>
+                  <p className="text-[10px] text-amber-400 font-extrabold uppercase tracking-widest mb-2">{t('drawingObjectGraphic')}</p>
                   <WordVisualGuide word={word} category={store.room?.settings.category} className="w-16 h-16" />
                 </div>
               )}
@@ -123,9 +123,7 @@ export function RoleRevealScreen() {
                 className="bg-slate-900 border border-slate-800 rounded-2xl p-4"
               >
                 <p className="text-slate-300 text-xs leading-relaxed font-medium">
-                  Kelimeyi bildiğini kanıtlayacak kadar çiz.
-                  <br />
-                  <span className="text-amber-400 font-bold">Ama Impostor'a çok açık kopya verme!</span>
+                  {t('normalRoleDesc')}
                 </p>
               </motion.div>
 
@@ -135,7 +133,7 @@ export function RoleRevealScreen() {
                 transition={{ delay: 0.8 }}
                 className="text-slate-500 text-xs mt-4 font-semibold"
               >
-                Kategori: <span className="text-slate-300 capitalize">{store.room?.settings.category ?? 'Rastgele'}</span>
+                {t('categoryLabel')} <span className="text-slate-300 capitalize">{store.room?.settings.category ?? t('random')}</span>
               </motion.p>
             </div>
           </>
@@ -148,7 +146,7 @@ export function RoleRevealScreen() {
           className="text-slate-500 text-xs font-semibold mt-6 flex items-center justify-center gap-2"
         >
           <Sparkles className="w-4 h-4 text-cyan-400 animate-spin" />
-          Çizim turu birazdan başlıyor...
+          {t('drawingStarting')}
         </motion.p>
       </motion.div>
     </div>

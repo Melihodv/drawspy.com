@@ -1,4 +1,4 @@
-export type LanguageCode = 'tr' | 'en' | 'de' | 'es' | 'fr';
+export type LanguageCode = 'tr' | 'en' | 'de' | 'es' | 'fr' | 'ar';
 
 export interface LanguageOption {
   code: LanguageCode;
@@ -11,6 +11,7 @@ export const LANGUAGES: LanguageOption[] = [
   { code: 'de', label: 'Deutsch' },
   { code: 'es', label: 'Español' },
   { code: 'fr', label: 'Français' },
+  { code: 'ar', label: 'العربية' },
 ];
 
 export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
@@ -28,7 +29,6 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     quickPlay: 'OYNA!',
     or: 'VEYA',
 
-    // Simplified How It Works section
     howItWorksTitle: 'OYUN NASIL OYNANIR?',
     step1Title: '1. Özel Oda Kur veya Katıl',
     step1Desc: 'Arkadaşlarınla gizli oda kur veya oda kodunu gir.',
@@ -58,8 +58,15 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     noLettersRuleDesc: 'Kelimeyi harf harf yazmak veya sayı kullanmak kural dışıdır.',
     confirmRules: 'ANLADIM, ONAYLA!',
     themeLabel: 'Kategori:',
+    languageLabel: 'Dil:',
+    drawingObjectGraphic: 'Çizilecek Nesne Görseli',
+    yourTurnBadge: 'SENİN SIRAN (ÇİZ!)',
+    drawerLabel: 'Çizen:',
+    categoryLabel: 'Kategori:',
+    inkLimit: 'Mürekkep Limiti',
+    inkDepleted: 'MÜREKKEP BİTTİ! (Bu turdaki çizim hakkını tamamladın)',
+    skippedTurnToast: 'SÜRE BİTTİ — Bu Tur Çizim Yapmadı!',
 
-    // Game screens
     lobbyTitle: 'Lobi · Oyuncular Bekleniyor',
     roomCode: 'Oda Kodu:',
     players: 'Oyuncular',
@@ -85,7 +92,6 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     seconds: 'Saniye',
     rounds: 'Tur',
 
-    // Role reveal
     spyRoleTitle: 'SEN IMPOSTOR\'SUN!',
     spyRoleDesc: 'Gizli kelimeyi bilmiyorsun! Diğer oyuncuların çizimlerini izle ve çaktırma.',
     categoryHintLabel: 'Kategori İpucu:',
@@ -94,7 +100,6 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     normalRoleDesc: 'Kelimeyi bildiğini kanıtlayacak kadar çiz. Ama Impostor\'a çok açık kopya verme!',
     drawingStarting: 'Çizim turu birazdan başlıyor...',
 
-    // Drawing & Turns
     yourTurn: 'SENİN SIRAN',
     isDrawing: 'çiziyor',
     yourSecretWordIs: 'Kelimeleriniz:',
@@ -108,7 +113,6 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     liveChat: 'Canlı Sohbet',
     typeMessage: 'Mesaj yaz...',
 
-    // Voting & Results
     voteTitle: 'OYLAMA ZAMANI!',
     whoIsSpy: 'Sence Impostor Kim?',
     votesSubmitted: 'Oy Kullanıldı',
@@ -124,7 +128,6 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     spyStoleRound: 'Impostor turu çaldı! +200 Puan',
     innocentEliminated: 'Elendi (Masumdu!)',
 
-    // Game Over
     gameOverTitle: 'OYUN BİTTİ!',
     winnerIs: 'Kazanan:',
     finalLeaderboard: 'Genel Sıralama',
@@ -136,7 +139,6 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     playAgain: 'Yeniden Oyna',
     shareResult: 'Sonucu Paylaş',
 
-    // Avatars
     avatar_0: 'Gölge Dedektif',
     avatar_1: 'Gizli Operatör',
     avatar_2: 'Usta Ressam',
@@ -175,31 +177,6 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     quickPlay: 'PLAY!',
     or: 'OR',
 
-    // Avatars
-    avatar_0: 'Shadow Detective',
-    avatar_1: 'Stealth Operative',
-    avatar_2: 'Master Artist',
-    avatar_3: 'Viper Agent',
-    avatar_4: 'Phantom Spy',
-    avatar_5: 'Cyber Impostor',
-    avatar_6: 'Golden Crown',
-    avatar_7: 'Ghost Operative',
-    avatar_8: 'Cyber Ninja',
-    avatar_9: 'Tactical Recon',
-    avatar_10: 'Noir Investigator',
-    avatar_11: 'Vivid Agent',
-    avatar_12: 'Uncle Erdal',
-    avatar_13: 'Neighbor Necla',
-    avatar_14: 'Bingo Mehmet',
-    avatar_15: 'Taxi Driver Nuri',
-    avatar_16: 'Grocer Huseyin',
-    avatar_17: 'Tea Master Remzi',
-    avatar_18: 'Video Call Auntie',
-    avatar_19: 'Doner Chef',
-    avatar_20: 'Glamour Melis',
-    avatar_21: 'Baker Riza',
-
-    // Simplified How It Works section
     howItWorksTitle: 'HOW TO PLAY',
     step1Title: '1. Join or Create Private Room',
     step1Desc: 'Connect to a private room with your friends.',
@@ -229,8 +206,15 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     noLettersRuleDesc: 'Writing out words or using numbers is against the rules.',
     confirmRules: 'GOT IT, CONFIRM!',
     themeLabel: 'Category:',
+    languageLabel: 'Language:',
+    drawingObjectGraphic: 'Object Graphic Guide',
+    yourTurnBadge: 'YOUR TURN (DRAW!)',
+    drawerLabel: 'Drawer:',
+    categoryLabel: 'Category:',
+    inkLimit: 'Ink Limit',
+    inkDepleted: 'OUT OF INK! (Drawing limit reached for this turn)',
+    skippedTurnToast: 'TIME UP — Did not draw this round!',
 
-    // Game screens
     lobbyTitle: 'Lobby · Waiting for players',
     roomCode: 'Room Code:',
     players: 'Players',
@@ -256,7 +240,6 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     seconds: 'Seconds',
     rounds: 'Rounds',
 
-    // Role reveal
     spyRoleTitle: 'YOU ARE THE IMPOSTOR!',
     spyRoleDesc: 'You do not know the secret word! Watch other players draw and blend in.',
     categoryHintLabel: 'Category Hint:',
@@ -265,7 +248,6 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     normalRoleDesc: 'Draw enough to prove you know it. But don’t make it too obvious!',
     drawingStarting: 'Drawing round starts shortly...',
 
-    // Drawing & Turns
     yourTurn: 'YOUR TURN',
     isDrawing: 'is drawing',
     yourSecretWordIs: 'Secret Word:',
@@ -279,7 +261,6 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     liveChat: 'Live Chat',
     typeMessage: 'Type a message...',
 
-    // Voting & Results
     voteTitle: 'VOTING TIME!',
     whoIsSpy: 'Who is the Impostor?',
     votesSubmitted: 'Votes Submitted',
@@ -295,7 +276,6 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     spyStoleRound: 'Impostor stole the round! +200 Points',
     innocentEliminated: 'Eliminated (Innocent!)',
 
-    // Game Over
     gameOverTitle: 'GAME OVER!',
     winnerIs: 'Winner:',
     finalLeaderboard: 'Final Leaderboard',
@@ -306,6 +286,29 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     roundsPlayedStat: 'Rounds Played',
     playAgain: 'Play Again',
     shareResult: 'Share Result',
+
+    avatar_0: 'Shadow Detective',
+    avatar_1: 'Stealth Operative',
+    avatar_2: 'Master Artist',
+    avatar_3: 'Viper Agent',
+    avatar_4: 'Phantom Spy',
+    avatar_5: 'Cyber Impostor',
+    avatar_6: 'Golden Crown',
+    avatar_7: 'Ghost Operative',
+    avatar_8: 'Cyber Ninja',
+    avatar_9: 'Tactical Recon',
+    avatar_10: 'Noir Investigator',
+    avatar_11: 'Vivid Agent',
+    avatar_12: 'Uncle Erdal',
+    avatar_13: 'Neighbor Necla',
+    avatar_14: 'Bingo Mehmet',
+    avatar_15: 'Taxi Driver Nuri',
+    avatar_16: 'Grocer Huseyin',
+    avatar_17: 'Tea Master Remzi',
+    avatar_18: 'Video Call Auntie',
+    avatar_19: 'Doner Chef',
+    avatar_20: 'Glamour Melis',
+    avatar_21: 'Baker Riza',
   },
 
   de: {
@@ -322,31 +325,6 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     quickPlay: 'SPIELEN!',
     or: 'ODER',
 
-    // Avatars
-    avatar_0: 'Schatten-Detektiv',
-    avatar_1: 'Tarn-Agent',
-    avatar_2: 'Meister-Künstler',
-    avatar_3: 'Viper-Agent',
-    avatar_4: 'Phantom-Spion',
-    avatar_5: 'Cyber-Impostor',
-    avatar_6: 'Goldene Krone',
-    avatar_7: 'Geist-Agent',
-    avatar_8: 'Cyber-Ninja',
-    avatar_9: 'Taktischer Aufklärer',
-    avatar_10: 'Noir-Ermittler',
-    avatar_11: 'Vivid-Agent',
-    avatar_12: 'Onkel Erdal',
-    avatar_13: 'Nachbarin Necla',
-    avatar_14: 'Bingo Mehmet',
-    avatar_15: 'Taxifahrer Nuri',
-    avatar_16: 'Krämer Huseyin',
-    avatar_17: 'Tee-Meister Remzi',
-    avatar_18: 'Videocall-Tante',
-    avatar_19: 'Döner-Chef',
-    avatar_20: 'Glamour Melis',
-    avatar_21: 'Bäcker Riza',
-
-    // Simplified How It Works section
     howItWorksTitle: 'SO WIRD GESPIELT',
     step1Title: '1. Privaten Raum erstellen',
     step1Desc: 'Verbinde dich mit deinen Freunden in einem privaten Raum.',
@@ -376,8 +354,15 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     noLettersRuleDesc: 'Wörter schreiben oder Zahlen nutzen ist regelwidrig.',
     confirmRules: 'VERSTANDEN, BESTÄTIGEN!',
     themeLabel: 'Kategorie:',
+    languageLabel: 'Sprache:',
+    drawingObjectGraphic: 'Grafischer Objektleiter',
+    yourTurnBadge: 'DU BIST DRAN (ZEICHNE!)',
+    drawerLabel: 'Zeichner:',
+    categoryLabel: 'Kategorie:',
+    inkLimit: 'Tintenlimit',
+    inkDepleted: 'TINTE ALLE! (Zeichenlimit für diese Runde erreicht)',
+    skippedTurnToast: 'ZEIT ABGELAUFEN — Hat diese Runde nicht gezeichnet!',
 
-    // Game screens
     lobbyTitle: 'Lobby · Warten auf Spieler',
     roomCode: 'Raumcode:',
     players: 'Spieler',
@@ -403,7 +388,6 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     seconds: 'Sekunden',
     rounds: 'Runden',
 
-    // Role reveal
     spyRoleTitle: 'DU BIST DER IMPOSTOR!',
     spyRoleDesc: 'Du kennst das Geheimwort nicht! Beobachte die anderen und passe dich an.',
     categoryHintLabel: 'Kategorie-Hinweis:',
@@ -412,7 +396,6 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     normalRoleDesc: 'Zeichne genug, um zu beweisen, dass du es weißt!',
     drawingStarting: 'Zeichenrunde startet gleich...',
 
-    // Drawing & Turns
     yourTurn: 'DU BIST DRAN',
     isDrawing: 'zeichnet',
     yourSecretWordIs: 'Geheimwort:',
@@ -426,7 +409,6 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     liveChat: 'Live-Chat',
     typeMessage: 'Nachricht schreiben...',
 
-    // Voting & Results
     voteTitle: 'ABSTIMMUNG!',
     whoIsSpy: 'Wer ist der Impostor?',
     votesSubmitted: 'Stimmen abgegeben',
@@ -442,7 +424,6 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     spyStoleRound: 'Impostor stiehlt die Runde! +200 Punkte',
     innocentEliminated: 'Eliminiert (Unschuldig!)',
 
-    // Game Over
     gameOverTitle: 'SPIEL VORBEI!',
     winnerIs: 'Gewinner:',
     finalLeaderboard: 'Endwertung',
@@ -453,6 +434,29 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     roundsPlayedStat: 'Gespielte Runden',
     playAgain: 'Nochmal spielen',
     shareResult: 'Ergebnis teilen',
+
+    avatar_0: 'Schatten-Detektiv',
+    avatar_1: 'Tarn-Agent',
+    avatar_2: 'Meister-Künstler',
+    avatar_3: 'Viper-Agent',
+    avatar_4: 'Phantom-Spion',
+    avatar_5: 'Cyber-Impostor',
+    avatar_6: 'Goldene Krone',
+    avatar_7: 'Geist-Agent',
+    avatar_8: 'Cyber-Ninja',
+    avatar_9: 'Taktischer Aufklärer',
+    avatar_10: 'Noir-Ermittler',
+    avatar_11: 'Vivid-Agent',
+    avatar_12: 'Onkel Erdal',
+    avatar_13: 'Nachbarin Necla',
+    avatar_14: 'Bingo Mehmet',
+    avatar_15: 'Taxifahrer Nuri',
+    avatar_16: 'Krämer Huseyin',
+    avatar_17: 'Tee-Meister Remzi',
+    avatar_18: 'Videocall-Tante',
+    avatar_19: 'Döner-Chef',
+    avatar_20: 'Glamour Melis',
+    avatar_21: 'Bäcker Riza',
   },
 
   es: {
@@ -469,31 +473,6 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     quickPlay: '¡JUGAR!',
     or: 'O',
 
-    // Avatars
-    avatar_0: 'Detective Sombra',
-    avatar_1: 'Operativo Sigiloso',
-    avatar_2: 'Maestro Artista',
-    avatar_3: 'Agente Víbora',
-    avatar_4: 'Espía Fantasma',
-    avatar_5: 'Impostor Ciber',
-    avatar_6: 'Corona de Oro',
-    avatar_7: 'Agente Fantasma',
-    avatar_8: 'Ninja Ciber',
-    avatar_9: 'Recon Táctico',
-    avatar_10: 'Investigador Noir',
-    avatar_11: 'Agente Vívido',
-    avatar_12: 'Tío Erdal',
-    avatar_13: 'Vecina Necla',
-    avatar_14: 'Bingo Mehmet',
-    avatar_15: 'Taxista Nuri',
-    avatar_16: 'Tendero Huseyin',
-    avatar_17: 'Maestro del Té Remzi',
-    avatar_18: 'Tía Videollamada',
-    avatar_19: 'Chef Kebab',
-    avatar_20: 'Melis Glamour',
-    avatar_21: 'Panadero Riza',
-
-    // Simplified How It Works section
     howItWorksTitle: 'CÓMO SE JUEGA',
     step1Title: '1. Crea una Sala Privada',
     step1Desc: 'Conéctate a una sala privada con tus amigos.',
@@ -523,8 +502,15 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     noLettersRuleDesc: 'Escribir palabras o usar números está prohibido.',
     confirmRules: '¡ENTENDIDO, CONFIRMAR!',
     themeLabel: 'Categoría:',
+    languageLabel: 'Idioma:',
+    drawingObjectGraphic: 'Guía Gráfica de Objeto',
+    yourTurnBadge: 'TU TURNO (¡DIBUJA!)',
+    drawerLabel: 'Dibujante:',
+    categoryLabel: 'Categoría:',
+    inkLimit: 'Límite de Tinta',
+    inkDepleted: '¡SIN TINTA! (Límite de dibujo alcanzado para este turno)',
+    skippedTurnToast: 'TIEMPO AGOTADO — ¡No dibujó en esta ronda!',
 
-    // Game screens
     lobbyTitle: 'Lobby · Esperando jugadores',
     roomCode: 'Código de Sala:',
     players: 'Jugadores',
@@ -550,7 +536,6 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     seconds: 'Segundos',
     rounds: 'Rondas',
 
-    // Role reveal
     spyRoleTitle: '¡ERES EL IMPOSTOR!',
     spyRoleDesc: '¡No conoces la palabra secreta! Observa a los demás y disimula.',
     categoryHintLabel: 'Pista de Categoría:',
@@ -559,7 +544,6 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     normalRoleDesc: 'Dibuja lo suficiente para demostrar que la sabes.',
     drawingStarting: 'La ronda de dibujo comienza en breve...',
 
-    // Drawing & Turns
     yourTurn: 'TU TURNO',
     isDrawing: 'está dibujando',
     yourSecretWordIs: 'Palabra Secreta:',
@@ -573,7 +557,6 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     liveChat: 'Chat en Vivo',
     typeMessage: 'Escribe un mensaje...',
 
-    // Voting & Results
     voteTitle: '¡HORA DE VOTAR!',
     whoIsSpy: '¿Quién es el Impostor?',
     votesSubmitted: 'Votos Emitidos',
@@ -589,7 +572,6 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     spyStoleRound: '¡El Impostor robó la ronda! +200 Pts',
     innocentEliminated: 'Eliminado (¡Inocente!)',
 
-    // Game Over
     gameOverTitle: '¡FIN DEL JUEGO!',
     winnerIs: 'Ganador:',
     finalLeaderboard: 'Clasificación Final',
@@ -600,6 +582,29 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     roundsPlayedStat: 'Rondas Jugadas',
     playAgain: 'Jugar de Nuevo',
     shareResult: 'Compartir Resultado',
+
+    avatar_0: 'Detective Sombra',
+    avatar_1: 'Operativo Sigiloso',
+    avatar_2: 'Maestro Artista',
+    avatar_3: 'Agente Víbora',
+    avatar_4: 'Espía Fantasma',
+    avatar_5: 'Impostor Ciber',
+    avatar_6: 'Corona de Oro',
+    avatar_7: 'Agente Fantasma',
+    avatar_8: 'Ninja Ciber',
+    avatar_9: 'Recon Táctico',
+    avatar_10: 'Investigador Noir',
+    avatar_11: 'Agente Vívido',
+    avatar_12: 'Tío Erdal',
+    avatar_13: 'Vecina Necla',
+    avatar_14: 'Bingo Mehmet',
+    avatar_15: 'Taxista Nuri',
+    avatar_16: 'Tendero Huseyin',
+    avatar_17: 'Maestro del Té Remzi',
+    avatar_18: 'Tía Videollamada',
+    avatar_19: 'Chef Kebab',
+    avatar_20: 'Melis Glamour',
+    avatar_21: 'Panadero Riza',
   },
 
   fr: {
@@ -616,31 +621,6 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     quickPlay: 'JOUER!',
     or: 'OU',
 
-    // Avatars
-    avatar_0: 'Détective Ombre',
-    avatar_1: 'Agent Furtif',
-    avatar_2: 'Maître Artiste',
-    avatar_3: 'Agent Vipère',
-    avatar_4: 'Espion Fantôme',
-    avatar_5: 'Imposteur Cyber',
-    avatar_6: 'Couronne d\'Or',
-    avatar_7: 'Agent Fantôme',
-    avatar_8: 'Ninja Cyber',
-    avatar_9: 'Recon Tactique',
-    avatar_10: 'Enquêteur Noir',
-    avatar_11: 'Agent Vivide',
-    avatar_12: 'Oncle Erdal',
-    avatar_13: 'Voisine Necla',
-    avatar_14: 'Bingo Mehmet',
-    avatar_15: 'Chauffeur Nuri',
-    avatar_16: 'Épicier Huseyin',
-    avatar_17: 'Maitre Thé Remzi',
-    avatar_18: 'Tante Visio',
-    avatar_19: 'Chef Kebab',
-    avatar_20: 'Melis Glamour',
-    avatar_21: 'Baker Riza',
-
-    // Simplified How It Works section
     howItWorksTitle: 'COMMENT JOUER',
     step1Title: '1. Créer un Salon Privé',
     step1Desc: 'Connectez-vous à un salon privé avec vos amis.',
@@ -670,8 +650,15 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     noLettersRuleDesc: 'Écrire des mots ou utiliser des chiffres est interdit.',
     confirmRules: 'COMPRIS, CONFIRMER!',
     themeLabel: 'Catégorie:',
+    languageLabel: 'Langue:',
+    drawingObjectGraphic: 'Guide Graphique de l\'Objet',
+    yourTurnBadge: 'À VOTRE TOUR (DESSINEZ!)',
+    drawerLabel: 'Dessinateur:',
+    categoryLabel: 'Catégorie:',
+    inkLimit: 'Limite d\'Encre',
+    inkDepleted: 'PLUS D\'ENCRE! (Limite de dessin atteinte pour cette manche)',
+    skippedTurnToast: 'TEMPS ÉCOULÉ — N\'a pas dessiné cette manche!',
 
-    // Game screens
     lobbyTitle: 'Salon · En attente de joueurs',
     roomCode: 'Code du Salon:',
     players: 'Joueurs',
@@ -697,7 +684,6 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     seconds: 'Secondes',
     rounds: 'Manches',
 
-    // Role reveal
     spyRoleTitle: 'VOUS ÊTES L\'IMPOSTEUR!',
     spyRoleDesc: 'Vous ne connaissez pas le mot secret! Observez les autres et ne vous faites pas prendre.',
     categoryHintLabel: 'Indice Catégorie:',
@@ -706,7 +692,6 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     normalRoleDesc: 'Dessinez suffisamment pour prouver que vous le savez.',
     drawingStarting: 'La manche de dessin commence bientôt...',
 
-    // Drawing & Turns
     yourTurn: 'À VOTRE TOUR',
     isDrawing: 'dessine',
     yourSecretWordIs: 'Mot Secret:',
@@ -720,7 +705,6 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     liveChat: 'Chat en Direct',
     typeMessage: 'Tapez un message...',
 
-    // Voting & Results
     voteTitle: 'L\'HEURE DU VOTE!',
     whoIsSpy: 'Qui est l\'Imposteur?',
     votesSubmitted: 'Votes Soumis',
@@ -736,7 +720,6 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     spyStoleRound: 'L\'imposteur a volé la manche! +200 Pts',
     innocentEliminated: 'Éliminé (Innocent!)',
 
-    // Game Over
     gameOverTitle: 'FIN DE LA PARTIE!',
     winnerIs: 'Gagnant:',
     finalLeaderboard: 'Classement Final',
@@ -747,6 +730,177 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     roundsPlayedStat: 'Manches Jouées',
     playAgain: 'Rejouer',
     shareResult: 'Partager le Résultat',
+
+    avatar_0: 'Détective Ombre',
+    avatar_1: 'Agent Furtif',
+    avatar_2: 'Maître Artiste',
+    avatar_3: 'Agent Vipère',
+    avatar_4: 'Espion Fantôme',
+    avatar_5: 'Imposteur Cyber',
+    avatar_6: 'Couronne d\'Or',
+    avatar_7: 'Agent Fantôme',
+    avatar_8: 'Ninja Cyber',
+    avatar_9: 'Recon Tactique',
+    avatar_10: 'Enquêteur Noir',
+    avatar_11: 'Agent Vivide',
+    avatar_12: 'Oncle Erdal',
+    avatar_13: 'Voisine Necla',
+    avatar_14: 'Bingo Mehmet',
+    avatar_15: 'Chauffeur Nuri',
+    avatar_16: 'Épicier Huseyin',
+    avatar_17: 'Maitre Thé Remzi',
+    avatar_18: 'Tante Visio',
+    avatar_19: 'Chef Kebab',
+    avatar_20: 'Melis Glamour',
+    avatar_21: 'Baker Riza',
+  },
+
+  ar: {
+    heroTagline: 'ارسم · خمن · اكتشف المنتحل',
+    subtitle: 'لعبة الرسم والذكاء الاجتماعي',
+    onlineStatus: 'غرف اللعب المباشرة نشطة',
+    playHeader: 'ابدأ وانضم إلى اللعبة',
+    quickProfile: 'إعدادات الملف',
+    nicknameLabel: 'اسمك المستعار:',
+    nicknamePlaceholder: 'أدخل اسمك المستعار...',
+    randomName: 'اسم عشوائي',
+    gameLanguage: 'اللغة:',
+    browseRooms: 'غرفة خاصة',
+    quickPlay: 'العب الآن!',
+    or: 'أو',
+
+    howItWorksTitle: 'كيف تلعب؟',
+    step1Title: '1. أنشئ أو انضم لغرفة خاصة',
+    step1Desc: 'تواصل مع أصدقائك في غرفة رسم خاصة.',
+    step2Title: '2. ارسم الكلمة السرية',
+    step2Desc: 'الجميع يرسم الكلمة السرية. المنتحل لا يعرفها!',
+    step3Title: '3. اكتشف المنتحل وصوت عليه',
+    step3Desc: 'عرف من يتظاهر واخرجه بالتصويت.',
+
+    selectLogin: 'طرق التسجيل السريع:',
+    googleLogin: 'الدخول عبر GOOGLE',
+    discordLogin: 'الدخول عبر DISCORD',
+    footerRights: 'DrawSpy © 2026 • لعبة الرسم واكتشاف المنتحل',
+    terms: 'شروط الخدمة',
+    privacy: 'سياسة الخصوصية',
+    thanks: 'شكر وتقدير',
+    contact: 'اتصل بنا',
+    selectAvatarTitle: 'اختر شخصيتك',
+    joinRoomTitle: 'انضم / أنشئ غرفة خاصة',
+    enterRoomCode: 'أدخل رمز الغرفة:',
+    connectRoom: 'الانضمام للغرفة',
+    validNicknameError: 'يرجى إدخال اسم مستعار صريح!',
+    profaneNicknameError: 'يرجى اختيار اسم مناسب وخالي من الألفاظ السيئة!',
+    validRoomCodeError: 'يرجى إدخال رمز غرفة صحيح!',
+    serverConnectError: 'تعذر الاتصال بالسيرفر. تأكد من تشغيله.',
+    rulesHeader: 'قواعد اللعبة',
+    noLettersRule: 'لا ترسم حروفاً أو أرقاماً أو رموزاً، اتفقنا؟',
+    noLettersRuleDesc: 'كتابة الكلمات أو استخدام الأرقام مخالف للقوانين.',
+    confirmRules: 'فهمت، موافق!',
+    themeLabel: 'الفئة:',
+    languageLabel: 'اللغة:',
+    drawingObjectGraphic: 'دليل الرسم البصري',
+    yourTurnBadge: 'دورك الآن (ارسم!)',
+    drawerLabel: 'الرّسام:',
+    categoryLabel: 'الفئة:',
+    inkLimit: 'حد الحبر',
+    inkDepleted: 'نفد الحبر! (وصلت إلى حد الرسم لهذا الدور)',
+    skippedTurnToast: 'انتهى الوقت — لم يرسم في هذه الجولة!',
+
+    lobbyTitle: 'الانتظار · بانتظار اللاعبين',
+    roomCode: 'رمز الغرفة:',
+    players: 'اللاعبون',
+    needMorePlayers: 'لاعبون إضافيون مطلوبون',
+    you: 'أنت',
+    host: 'المضيف',
+    reconnecting: 'جاري إعادة الاتصال...',
+    waiting: 'بانتظار...',
+    inviteTitle: 'دعوة الأصدقاء',
+    roomLink: 'رابط الغرفة:',
+    copyLink: 'نسخ الرابط',
+    copied: 'تم النسخ!',
+    rulesTitle: 'القواعد',
+    roundCount: 'الجولات:',
+    drawTime: 'وقت الرسم:',
+    category: 'الفئة:',
+    spyHint: 'تلميح المنتحل:',
+    random: 'عشوائي',
+    enabled: 'مفعل',
+    disabled: 'معطل',
+    startGame: 'ابدأ اللعبة',
+    waitingHost: 'بانتظار المضيف لبدء اللعبة...',
+    seconds: 'ثواني',
+    rounds: 'جولات',
+
+    spyRoleTitle: 'أنت هو المنتحل!',
+    spyRoleDesc: 'أنت لا تعرف الكلمة السرية! راقب رسم الآخرين ولا تكتشف.',
+    categoryHintLabel: 'تلميح الفئة:',
+    spyWarning: 'إذا تم اكتشافك، ستحصل على فرصة أخيرة لتخمين الكلمة!',
+    normalSecretWord: 'كلمتك السرية:',
+    normalRoleDesc: 'ارسم ما يكفي لإثبات معرفتك بالكلمة دون كشفها للمنتحل!',
+    drawingStarting: 'تبدأ جولة الرسم بعد قليل...',
+
+    yourTurn: 'دورك',
+    isDrawing: 'يرسم',
+    yourSecretWordIs: 'الكلمة السرية:',
+    youAreSpy: 'أنت المنتحل',
+    turnOrder: 'ترتيب الأدوار',
+    pts: 'نقاط',
+    drawingProgress: 'يرسم الان...',
+    pen: 'قلم',
+    eraser: 'ممحاة',
+    undo: 'تراجع',
+    liveChat: 'محادثة مباشرة',
+    typeMessage: 'اكتب رسالة...',
+
+    voteTitle: 'وقت التصويت!',
+    whoIsSpy: 'من هو المنتحل برأيك؟',
+    votesSubmitted: 'تم تقديم الأصوات',
+    yourVote: 'صوتك',
+    voteHelp: 'تم إرسال صوتك. يمكنك تغييره حتى نهاية الوقت.',
+    tieTitle: 'تعادل!',
+    tiedPlayers: 'أصوات متساوية لـ:',
+    spyCaughtTitle: 'تم القبض على المنتحل!',
+    wasSpy: 'كان المنتحل!',
+    spyLastChanceDesc: 'فرصة أخيرة لتخمين الكلمة...',
+    spyEscapedTitle: 'هروب المنتحل!',
+    spyFooledAll: 'المنتحل خدع الجميع بنجاح!',
+    spyStoleRound: 'سرق المنتحل الجولة! +200 نقطة',
+    innocentEliminated: 'تم استبعاده (بريء!)',
+
+    gameOverTitle: 'انتهت اللعبة!',
+    winnerIs: 'الفائز:',
+    finalLeaderboard: 'الترتيب النهائي',
+    gameStats: 'إحصائيات اللعبة',
+    spiesCaughtStat: 'المنتحلون المقبوض عليهم',
+    spiesEscapedStat: 'المنتحلون الهاربون',
+    correctGuessesStat: 'التخمينات الصحيحة',
+    roundsPlayedStat: 'الجولات الملعوبة',
+    playAgain: 'العب مجدداً',
+    shareResult: 'مشاركة النتيجة',
+
+    avatar_0: 'محقق الظل',
+    avatar_1: 'عميل خفي',
+    avatar_2: 'رسام ماهر',
+    avatar_3: 'عميل الأفعى',
+    avatar_4: 'جاسوس طيف',
+    avatar_5: 'منتحل سايبر',
+    avatar_6: 'التاج الذهبي',
+    avatar_7: 'عميل شبحي',
+    avatar_8: 'نينجا سايبر',
+    avatar_9: 'مستكشف تكتيكي',
+    avatar_10: 'متحري نووار',
+    avatar_11: 'عميل متألق',
+    avatar_12: 'العم أردال',
+    avatar_13: 'الجار نجلاء',
+    avatar_14: 'بينغو محمد',
+    avatar_15: 'سائق التاكسي نوري',
+    avatar_16: 'البقال حسين',
+    avatar_17: 'معلم الشاي رمزي',
+    avatar_18: 'خالة اتصالات الفيديو',
+    avatar_19: 'شيف الشاورما',
+    avatar_20: 'ميليس الأنيقة',
+    avatar_21: 'الخباز رضا',
   },
 };
 

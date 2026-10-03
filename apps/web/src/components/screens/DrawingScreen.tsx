@@ -59,7 +59,7 @@ export function DrawingScreen({ roomCode }: DrawingScreenProps) {
       if (didDraw === false) {
         const skippedPlayer = players.find((p) => p.id === playerId);
         if (skippedPlayer) {
-          setSkippedNotice(`${skippedPlayer.nickname} bu tur çizim yapmadı!`);
+          setSkippedNotice(`${skippedPlayer.nickname}: ${t('skippedTurnToast')}`);
           setTimeout(() => setSkippedNotice(null), 3500);
         }
       }
@@ -68,7 +68,7 @@ export function DrawingScreen({ roomCode }: DrawingScreenProps) {
     return () => {
       s.off('turn_ended', handleTurnEnded as any);
     };
-  }, [players]);
+  }, [players, t]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -245,13 +245,13 @@ export function DrawingScreen({ roomCode }: DrawingScreenProps) {
               className="bg-gradient-to-r from-amber-400 to-amber-500 text-slate-950 font-black text-xs px-3.5 py-1.5 rounded-full uppercase tracking-wider shadow-lg shadow-amber-500/20 flex items-center gap-1.5"
             >
               <Pencil className="w-3.5 h-3.5 stroke-[3]" />
-              <span>SENİN SIRAN (ÇİZ!)</span>
+              <span>{t('yourTurnBadge')}</span>
             </motion.div>
           ) : (
             <div className="flex items-center gap-2 bg-slate-900 border border-slate-800 px-3 py-1 rounded-full">
               <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping" />
               <span className="text-slate-400 text-xs font-semibold">
-                Çizen: <span className="font-bold text-cyan-400">{currentPlayer?.nickname ?? '...'}</span>
+                {t('drawerLabel')} <span className="font-bold text-cyan-400">{currentPlayer?.nickname ?? '...'}</span>
               </span>
             </div>
           )}
@@ -263,7 +263,7 @@ export function DrawingScreen({ roomCode }: DrawingScreenProps) {
             <div className="flex items-center gap-2.5 bg-slate-900/90 border border-amber-500/40 px-3.5 py-1.5 rounded-xl shadow-lg">
               <WordVisualGuide word={store.myWord} category={store.room?.settings.category} className="w-7 h-7" />
               <div className="flex flex-col">
-                <span className="text-[10px] text-amber-400 font-black uppercase tracking-widest leading-none">Çizilecek Nesne Görseli</span>
+                <span className="text-[10px] text-amber-400 font-black uppercase tracking-widest leading-none">{t('drawingObjectGraphic')}</span>
                 <span className="text-sm font-black text-white uppercase tracking-wider">{store.myWord}</span>
               </div>
             </div>
@@ -271,14 +271,14 @@ export function DrawingScreen({ roomCode }: DrawingScreenProps) {
 
           {store.myRole === 'spy' && (
             <div className="text-rose-400 font-black text-xs uppercase tracking-wide flex items-center gap-1.5 bg-rose-500/10 px-3 py-1.5 rounded-xl border border-rose-500/30">
-              <ShieldAlert className="w-4 h-4" /> SEN IMPOSTOR'SUN
+              <ShieldAlert className="w-4 h-4" /> {t('youAreSpy')}
             </div>
           )}
 
           <button
             onClick={() => setShowRules(true)}
             className="flex items-center gap-1.5 px-3 py-1.5 bg-amber-400/15 hover:bg-amber-400/25 border border-amber-400/40 rounded-xl text-amber-300 font-extrabold text-xs transition-all hover:scale-105"
-            title="Kuralları Gör"
+            title={t('rulesHeader')}
           >
             <HelpCircle className="w-4 h-4 stroke-[2.5]" />
             <span className="hidden sm:inline uppercase">{t('rulesHeader')}</span>
@@ -294,7 +294,7 @@ export function DrawingScreen({ roomCode }: DrawingScreenProps) {
 
         {/* Left: Player turn order */}
         <div className="hidden md:flex flex-col gap-2 p-3 w-48 bg-slate-900/60 border-r border-slate-800">
-          <p className="text-slate-400 text-[11px] font-bold uppercase tracking-wider px-1 mb-1">Tur Sırası</p>
+          <p className="text-slate-400 text-[11px] font-bold uppercase tracking-wider px-1 mb-1">{t('turnOrder')}</p>
           {room?.players.map((p) => {
             const isActive = p.id === activePlayerId;
             return (
@@ -309,7 +309,7 @@ export function DrawingScreen({ roomCode }: DrawingScreenProps) {
                   <p className={`text-xs font-bold truncate ${isActive ? 'text-cyan-400' : 'text-white'}`}>
                     {p.nickname}
                   </p>
-                  <p className="text-slate-400 text-[10px] font-semibold">{p.score} puan</p>
+                  <p className="text-slate-400 text-[10px] font-semibold">{p.score} {t('pts')}</p>
                 </div>
                 {isActive && <div className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />}
               </div>
@@ -338,7 +338,7 @@ export function DrawingScreen({ roomCode }: DrawingScreenProps) {
             {!isMyTurn && (
               <div className="absolute inset-0 flex items-end justify-center pb-4 pointer-events-none">
                 <div className="bg-slate-950/80 backdrop-blur-md rounded-full px-4 py-2 text-slate-300 text-xs font-semibold">
-                  {currentPlayer?.nickname} çizim yapıyor...
+                  {currentPlayer?.nickname} {t('drawingProgress')}
                 </div>
               </div>
             )}
@@ -352,7 +352,7 @@ export function DrawingScreen({ roomCode }: DrawingScreenProps) {
                 className="absolute top-4 left-1/2 -translate-x-1/2 bg-amber-500 text-slate-950 font-black text-xs px-5 py-2.5 rounded-2xl border-2 border-slate-900 shadow-2xl backdrop-blur-xs flex items-center gap-2 select-none"
               >
                 <ShieldAlert className="w-4 h-4 stroke-[3]" />
-                <span>SÜRE BİTTİ — {skippedNotice}</span>
+                <span>{skippedNotice}</span>
               </motion.div>
             )}
 
@@ -360,7 +360,7 @@ export function DrawingScreen({ roomCode }: DrawingScreenProps) {
             {isMyTurn && usedInk >= MAX_INK_DISTANCE && (
               <div className="absolute top-4 left-1/2 -translate-x-1/2 bg-rose-500 text-white font-black text-xs px-5 py-2.5 rounded-2xl border-2 border-slate-900 shadow-2xl backdrop-blur-xs flex items-center gap-2 animate-bounce select-none">
                 <ShieldAlert className="w-4 h-4 stroke-[3]" />
-                <span>MÜREKKEP BİTTİ! (Bu turdaki çizim hakkını tamamladın)</span>
+                <span>{t('inkDepleted')}</span>
               </div>
             )}
           </div>
@@ -379,7 +379,7 @@ export function DrawingScreen({ roomCode }: DrawingScreenProps) {
                   className={`p-2 rounded-xl flex items-center justify-center transition-all ${
                     tool === 'pen' ? 'bg-cyan-500 text-slate-950 font-bold' : 'text-slate-400 hover:text-white'
                   }`}
-                  title="Kalem"
+                  title={t('pen')}
                 >
                   <Pencil className="w-4 h-4" />
                 </button>
@@ -388,7 +388,7 @@ export function DrawingScreen({ roomCode }: DrawingScreenProps) {
                   className={`p-2 rounded-xl flex items-center justify-center transition-all ${
                     tool === 'eraser' ? 'bg-cyan-500 text-slate-950 font-bold' : 'text-slate-400 hover:text-white'
                   }`}
-                  title="Silgi"
+                  title={t('eraser')}
                 >
                   <Eraser className="w-4 h-4" />
                 </button>
@@ -442,7 +442,7 @@ export function DrawingScreen({ roomCode }: DrawingScreenProps) {
               <button
                 onClick={handleUndo}
                 className="p-2 text-slate-400 hover:text-white transition-colors"
-                title="Geri Al"
+                title={t('undo')}
               >
                 <Undo2 className="w-4 h-4" />
               </button>
@@ -453,7 +453,7 @@ export function DrawingScreen({ roomCode }: DrawingScreenProps) {
               {(() => {
                 const inkPct = Math.max(0, Math.round(((MAX_INK_DISTANCE - usedInk) / MAX_INK_DISTANCE) * 100));
                 return (
-                  <div className="flex items-center gap-2 bg-slate-950 px-3 py-1.5 rounded-xl border border-slate-800" title="Mürekkep Limiti">
+                  <div className="flex items-center gap-2 bg-slate-950 px-3 py-1.5 rounded-xl border border-slate-800" title={t('inkLimit')}>
                     <Droplet className={`w-4 h-4 ${inkPct > 30 ? 'text-cyan-400' : inkPct > 10 ? 'text-amber-400' : 'text-rose-500 animate-bounce'}`} />
                     <div className="w-16 bg-slate-800 h-2 rounded-full overflow-hidden border border-slate-700">
                       <div
@@ -474,7 +474,7 @@ export function DrawingScreen({ roomCode }: DrawingScreenProps) {
         {/* Right Chat Panel */}
         <div className="hidden lg:flex flex-col w-60 bg-slate-900/80 border-l border-slate-800">
           <div className="p-3 border-b border-slate-800">
-            <p className="text-slate-400 text-xs font-bold uppercase tracking-wider">Canlı Sohbet</p>
+            <p className="text-slate-400 text-xs font-bold uppercase tracking-wider">{t('liveChat')}</p>
           </div>
           <div className="flex-1 overflow-y-auto p-3 space-y-2">
             {store.chatMessages.map((msg, i) => (
@@ -490,7 +490,7 @@ export function DrawingScreen({ roomCode }: DrawingScreenProps) {
                 value={chatText}
                 onChange={(e) => setChatText(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && sendChat()}
-                placeholder="Mesaj yaz..."
+                placeholder={t('typeMessage')}
                 maxLength={150}
                 className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white focus:border-cyan-400 outline-none"
               />
