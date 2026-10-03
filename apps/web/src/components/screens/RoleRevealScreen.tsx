@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { ShieldAlert, Pencil, Sparkles } from 'lucide-react';
 import { useGameStore } from '@/store/gameStore';
+import { WordVisualGuide } from '@/components/ui/WordVisualGuide';
 
 export function RoleRevealScreen() {
   const store = useGameStore();
@@ -43,7 +44,7 @@ export function RoleRevealScreen() {
                 transition={{ delay: 0.2 }}
                 className="font-black text-3xl text-rose-400 mb-3 tracking-wide"
               >
-                SEN GİZLİ AJANSIN!
+                SEN GİZLİ IMPOSTOR'SUN!
               </motion.h2>
 
               <motion.p
@@ -99,6 +100,13 @@ export function RoleRevealScreen() {
                 Gizli Kelimeniz:
               </motion.p>
 
+              {word && (
+                <div className="flex flex-col items-center justify-center my-3 bg-slate-900/80 p-4 rounded-2xl border border-amber-500/30">
+                  <p className="text-[10px] text-amber-400 font-extrabold uppercase tracking-widest mb-2">Çizilecek Nesne Görseli</p>
+                  <WordVisualGuide word={word} category={store.room?.settings.category} className="w-16 h-16" />
+                </div>
+              )}
+
               <motion.h2
                 initial={{ opacity: 0, scale: 0.5 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -117,7 +125,7 @@ export function RoleRevealScreen() {
                 <p className="text-slate-300 text-xs leading-relaxed font-medium">
                   Kelimeyi bildiğini kanıtlayacak kadar çiz.
                   <br />
-                  <span className="text-amber-400 font-bold">Ama ajana çok açık kopya verme!</span>
+                  <span className="text-amber-400 font-bold">Ama Impostor'a çok açık kopya verme!</span>
                 </p>
               </motion.div>
 

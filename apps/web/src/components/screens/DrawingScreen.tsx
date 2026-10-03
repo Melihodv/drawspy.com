@@ -11,6 +11,7 @@ import { motion } from 'framer-motion';
 import { Pencil, Eraser, Undo2, Send, ShieldAlert, HelpCircle, Droplet } from 'lucide-react';
 import { Avatar } from '@/components/ui/Avatar';
 import { GameRulesModal } from '@/components/ui/GameRulesModal';
+import { WordVisualGuide } from '@/components/ui/WordVisualGuide';
 import { useTranslation } from '@/utils/i18n';
 
 interface DrawingScreenProps {
@@ -210,36 +211,48 @@ export function DrawingScreen({ roomCode }: DrawingScreenProps) {
     <div className="min-h-screen bg-[#060D18] flex flex-col text-slate-100 font-sans">
 
       {/* Header */}
-      <div className="flex items-center justify-between px-4 py-3 bg-slate-900 border-b border-slate-800">
+      <div className="flex flex-wrap items-center justify-between px-4 py-3 bg-[#0F1C2E] border-b border-slate-800 gap-3">
         <div className="flex items-center gap-3">
           <span className="font-extrabold text-xl tracking-tight text-white">
             Draw<span className="text-cyan-400">Spy</span>
           </span>
-          <div className="h-4 w-px bg-slate-700" />
+          <div className="h-4 w-px bg-slate-700 hidden sm:block" />
+
+          {/* Active Drawer Badge */}
           {isMyTurn ? (
             <motion.div
               animate={{ scale: [1, 1.05, 1] }}
               transition={{ repeat: Infinity, duration: 1.5 }}
-              className="bg-amber-400 text-slate-950 font-black text-xs px-3 py-1 rounded-full uppercase tracking-wider"
+              className="bg-gradient-to-r from-amber-400 to-amber-500 text-slate-950 font-black text-xs px-3.5 py-1.5 rounded-full uppercase tracking-wider shadow-lg shadow-amber-500/20 flex items-center gap-1.5"
             >
-              SENİN SIRAN
+              <span>✍️</span>
+              <span>SENİN SIRAN (ÇİZ!)</span>
             </motion.div>
           ) : (
-            <div className="text-slate-400 text-xs font-semibold">
-              <span className="font-bold text-white">{currentPlayer?.nickname ?? '...'}</span> çiziyor
+            <div className="flex items-center gap-2 bg-slate-900 border border-slate-800 px-3 py-1 rounded-full">
+              <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping" />
+              <span className="text-slate-400 text-xs font-semibold">
+                Çizen: <span className="font-bold text-cyan-400">{currentPlayer?.nickname ?? '...'}</span>
+              </span>
             </div>
           )}
         </div>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3">
+          {/* Secret Word & Visual Guide Graphic */}
           {store.myRole === 'normal' && store.myWord && (
-            <div className="text-amber-400 font-black text-sm uppercase tracking-wide bg-amber-500/10 px-3 py-1 rounded-lg border border-amber-500/20">
-              Kelimeleriniz: <span className="text-white">{store.myWord}</span>
+            <div className="flex items-center gap-2.5 bg-slate-900/90 border border-amber-500/40 px-3.5 py-1.5 rounded-xl shadow-lg">
+              <WordVisualGuide word={store.myWord} category={store.room?.settings.category} className="w-7 h-7" />
+              <div className="flex flex-col">
+                <span className="text-[10px] text-amber-400 font-black uppercase tracking-widest leading-none">Çizilecek Nesne Görseli</span>
+                <span className="text-sm font-black text-white uppercase tracking-wider">{store.myWord}</span>
+              </div>
             </div>
           )}
+
           {store.myRole === 'spy' && (
-            <div className="text-rose-400 font-black text-sm uppercase tracking-wide flex items-center gap-1.5 bg-rose-500/10 px-3 py-1 rounded-lg border border-rose-500/20">
-              <ShieldAlert className="w-4 h-4" /> SEN GİZLİ AJANSIN
+            <div className="text-rose-400 font-black text-xs uppercase tracking-wide flex items-center gap-1.5 bg-rose-500/10 px-3 py-1.5 rounded-xl border border-rose-500/30">
+              <ShieldAlert className="w-4 h-4" /> SEN IMPOSTOR'SUN
             </div>
           )}
 

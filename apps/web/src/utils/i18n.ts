@@ -91,7 +91,7 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
     categoryHintLabel: 'Kategori İpucu:',
     spyWarning: 'Yakalanırsan son bir kelime tahmin hakkın olacak!',
     normalSecretWord: 'Gizli Kelimeniz:',
-    normalRoleDesc: 'Kelimeyi bildiğini kanıtlayacak kadar çiz. Ama impostor\'a çok açık kopya verme!',
+    normalRoleDesc: 'Kelimeyi bildiğini kanıtlayacak kadar çiz. Ama Impostor\'a çok açık kopya verme!',
     drawingStarting: 'Çizim turu birazdan başlıyor...',
 
     // Drawing & Turns

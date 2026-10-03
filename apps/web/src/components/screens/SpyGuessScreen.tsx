@@ -37,10 +37,10 @@ export function SpyGuessScreen() {
               </div>
               <h2 className="font-black text-4xl text-amber-400 mb-3 tracking-wide">DOĞRU TAHMİN!</h2>
               <p className="text-slate-300 text-sm leading-relaxed mb-4">
-                Gizli Ajan kelimeyi doğru tahmin etti: <span className="text-amber-400 font-extrabold text-base">"{guessResult.secretWord}"</span>!
+                Gizli Impostor kelimeyi doğru tahmin etti: <span className="text-amber-400 font-extrabold text-base">"{guessResult.secretWord}"</span>!
               </p>
               <div className="bg-amber-500/10 border border-amber-500/20 rounded-2xl p-3 text-amber-300 text-xs font-bold">
-                Ajan turu çaldı! +150 Puan
+                Impostor turu çaldı! +150 Puan
               </div>
             </div>
           ) : (
@@ -52,7 +52,7 @@ export function SpyGuessScreen() {
               <p className="text-slate-300 text-sm leading-relaxed mb-2">
                 Gizli kelime: <span className="text-amber-400 font-extrabold text-base">"{guessResult.secretWord}"</span>
               </p>
-              <p className="text-slate-400 text-xs font-semibold">Ajanın Tahmini: "{guessResult.guess}"</p>
+              <p className="text-slate-400 text-xs font-semibold">Impostor'ın Tahmini: "{guessResult.guess}"</p>
             </div>
           )}
         </motion.div>
@@ -108,8 +108,8 @@ export function SpyGuessScreen() {
           </>
         ) : (
           <>
-            <h2 className="font-black text-3xl text-white mb-2 tracking-wide">AJANIN SON ŞANSI</h2>
-            <p className="text-slate-400 text-sm mb-6">Gizli ajan gizli kelimeyi tahmin etmeye çalışıyor...</p>
+            <h2 className="font-black text-3xl text-white mb-2 tracking-wide">IMPOSTOR'IN SON ŞANSI</h2>
+            <p className="text-slate-400 text-sm mb-6">Gizli Impostor gizli kelimeyi tahmin etmeye çalışıyor...</p>
 
             {store.phaseEndsAt && (
               <CountdownTimer endsAt={store.phaseEndsAt} warningAt={3} large />
