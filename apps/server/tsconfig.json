@@ -5,9 +5,9 @@
     "moduleResolution": "node",
     "ignoreDeprecations": "6.0",
     "paths": {
-      "@drawspy/shared": ["../../packages/shared/src/index.ts"],
-      "@drawspy/game-engine": ["../../packages/game-engine/src/index.ts"],
-      "@drawspy/words": ["../../packages/words/src/index.ts"]
+      "@drawspy/shared": ["../../packages/shared/dist/index.d.ts"],
+      "@drawspy/game-engine": ["../../packages/game-engine/dist/index.d.ts"],
+      "@drawspy/words": ["../../packages/words/dist/index.d.ts"]
     }
   },
   "include": ["src"]

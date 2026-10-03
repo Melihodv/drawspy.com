@@ -109,7 +109,7 @@ export const roomStore = new RoomStore();
 registerSocketHandlers(io, roomStore);
 
 // ─── Start ────────────────────────────────────────────────────────────────────
-httpServer.listen(PORT, () => {
+httpServer.listen(PORT, '0.0.0.0', () => {
   console.log(`🚀 DrawSpy server running on port ${PORT} [${NODE_ENV}]`);
   console.log(`   Accepting connections from: ${ALLOWED_ORIGINS.join(', ')}`);
 });
