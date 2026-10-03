@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /room/
+
+Sitemap: https://www.drawspy.com/sitemap.xml

@@ -10,7 +10,6 @@ import {
   User,
   Globe,
   Sparkles,
-  MessageSquare,
   Shuffle,
   Palette,
   Crown,
@@ -465,23 +464,7 @@ export default function HomePage() {
                 </div>
               </div>
 
-              {/* SOCIAL LOGIN */}
-              <div className="pt-4 border-t border-slate-200">
-                <span className="block text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-2.5 text-center">
-                  {t('selectLogin')}
-                </span>
 
-                <div className="grid grid-cols-2 gap-2.5">
-                  <button className="flex items-center justify-center gap-2 py-2.5 px-3 bg-slate-100 hover:bg-slate-200 border border-slate-300 text-slate-800 text-xs font-bold rounded-xl transition-all">
-                    <Globe className="w-4 h-4 text-sky-500" />
-                    <span>GOOGLE</span>
-                  </button>
-                  <button className="flex items-center justify-center gap-2 py-2.5 px-3 bg-slate-100 hover:bg-slate-200 border border-slate-300 text-slate-800 text-xs font-bold rounded-xl transition-all">
-                    <MessageSquare className="w-4 h-4 text-rose-500" />
-                    <span>DISCORD</span>
-                  </button>
-                </div>
-              </div>
             </div>
 
           </div>
@@ -495,10 +478,9 @@ export default function HomePage() {
         </div>
 
         <div className="flex flex-wrap justify-center gap-5 font-semibold text-slate-600">
-          <a href="#" className="hover:text-sky-600 transition-colors">{t('terms')}</a>
-          <a href="#" className="hover:text-sky-600 transition-colors">{t('privacy')}</a>
-          <a href="#" className="hover:text-sky-600 transition-colors">{t('thanks')}</a>
-          <a href="#" className="hover:text-sky-600 transition-colors">{t('contact')}</a>
+          <a href="/terms" className="hover:text-sky-600 transition-colors">{t('terms')}</a>
+          <a href="/privacy" className="hover:text-sky-600 transition-colors">{t('privacy')}</a>
+          <a href="mailto:hello@drawspy.com" className="hover:text-sky-600 transition-colors">{t('contact')}</a>
         </div>
       </footer>
 

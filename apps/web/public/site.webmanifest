@@ -1,0 +1,18 @@
+{
+  "name": "DrawSpy",
+  "short_name": "DrawSpy",
+  "description": "Free multiplayer drawing & spy deduction game. Draw, bluff, find the Impostor!",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0D1B2A",
+  "theme_color": "#0D1B2A",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    }
+  ],
+  "categories": ["games", "entertainment"]
+}
