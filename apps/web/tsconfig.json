@@ -19,12 +19,6 @@
     "paths": {
       "@/*": [
         "./src/*"
-      ],
-      "@drawspy/shared": [
-        "../../packages/shared/src/index.ts"
-      ],
-      "@drawspy/game-engine": [
-        "../../packages/game-engine/src/index.ts"
       ]
     },
     "allowJs": true,

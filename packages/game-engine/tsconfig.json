@@ -5,7 +5,7 @@
     "rootDir": "./src",
     "lib": ["ES2022", "DOM"],
     "paths": {
-      "@drawspy/shared": ["../shared/src/index.ts"]
+      "@drawspy/shared": ["../shared"]
     }
   },
   "include": ["src"]
