@@ -119,7 +119,10 @@ export function endCurrentTurn(
   if (!sr?.gameState.round) return;
 
   const currentPlayer = sr.gameState.round.currentTurnPlayerId;
-  io.to(roomCode).emit('turn_ended', { playerId: currentPlayer });
+  const playerStrokes = sr.gameState.round.strokes.filter((s) => s.playerId === currentPlayer);
+  const didDraw = playerStrokes.length > 0;
+
+  io.to(roomCode).emit('turn_ended', { playerId: currentPlayer, didDraw });
 
   const { nextPlayerId, isLastTurn } = store.advanceTurn(roomCode);
 

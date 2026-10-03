@@ -31,6 +31,7 @@ export function DrawingScreen({ roomCode }: DrawingScreenProps) {
   const [chatText, setChatText] = useState('');
   const [showRules, setShowRules] = useState(true);
   const [usedInk, setUsedInk] = useState(0);
+  const [skippedNotice, setSkippedNotice] = useState<string | null>(null);
 
   const MAX_INK_DISTANCE = 400; // Maximum stroke distance limit per turn
 
@@ -50,6 +51,24 @@ export function DrawingScreen({ roomCode }: DrawingScreenProps) {
   useEffect(() => {
     setUsedInk(0);
   }, [activePlayerId]);
+
+  // Listen for skipped turns (when player did not draw)
+  useEffect(() => {
+    const s = getSocket();
+    const handleTurnEnded = ({ playerId, didDraw }: { playerId: string; didDraw?: boolean }) => {
+      if (didDraw === false) {
+        const skippedPlayer = players.find((p) => p.id === playerId);
+        if (skippedPlayer) {
+          setSkippedNotice(`${skippedPlayer.nickname} bu tur çizim yapmadı!`);
+          setTimeout(() => setSkippedNotice(null), 3500);
+        }
+      }
+    };
+    s.on('turn_ended', handleTurnEnded as any);
+    return () => {
+      s.off('turn_ended', handleTurnEnded as any);
+    };
+  }, [players]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -225,7 +244,7 @@ export function DrawingScreen({ roomCode }: DrawingScreenProps) {
               transition={{ repeat: Infinity, duration: 1.5 }}
               className="bg-gradient-to-r from-amber-400 to-amber-500 text-slate-950 font-black text-xs px-3.5 py-1.5 rounded-full uppercase tracking-wider shadow-lg shadow-amber-500/20 flex items-center gap-1.5"
             >
-              <span>✍️</span>
+              <Pencil className="w-3.5 h-3.5 stroke-[3]" />
               <span>SENİN SIRAN (ÇİZ!)</span>
             </motion.div>
           ) : (
@@ -322,6 +341,19 @@ export function DrawingScreen({ roomCode }: DrawingScreenProps) {
                   {currentPlayer?.nickname} çizim yapıyor...
                 </div>
               </div>
+            )}
+
+            {/* Skipped turn notice toast */}
+            {skippedNotice && (
+              <motion.div
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0 }}
+                className="absolute top-4 left-1/2 -translate-x-1/2 bg-amber-500 text-slate-950 font-black text-xs px-5 py-2.5 rounded-2xl border-2 border-slate-900 shadow-2xl backdrop-blur-xs flex items-center gap-2 select-none"
+              >
+                <ShieldAlert className="w-4 h-4 stroke-[3]" />
+                <span>SÜRE BİTTİ — {skippedNotice}</span>
+              </motion.div>
             )}
 
             {/* Ink Exhausted Toast */}
