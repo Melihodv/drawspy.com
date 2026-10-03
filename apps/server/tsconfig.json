@@ -1,0 +1,14 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "paths": {
+      "@drawspy/shared": ["../../packages/shared/src/index.ts"],
+      "@drawspy/game-engine": ["../../packages/game-engine/src/index.ts"],
+      "@drawspy/words": ["../../packages/words/src/index.ts"]
+    }
+  },
+  "include": ["src"]
+}

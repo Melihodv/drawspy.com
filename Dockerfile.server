@@ -1,0 +1,22 @@
+# DrawSpy — Game Server (Railway / Fly.io / Render)
+
+FROM node:20-slim
+
+RUN npm install -g pnpm@latest
+
+WORKDIR /app
+
+COPY pnpm-workspace.yaml .
+COPY package.json .
+COPY tsconfig.base.json .
+COPY packages/ packages/
+COPY apps/server/ apps/server/
+
+RUN pnpm install --filter @drawspy/server... --ignore-scripts
+
+WORKDIR /app/apps/server
+
+ENV NODE_ENV=production
+ENV PORT=3001
+
+CMD ["npx", "tsx", "src/index.ts"]

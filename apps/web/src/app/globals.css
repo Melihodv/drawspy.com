@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700;800&family=Fredoka:wght@600;700;800&family=Lilita+One&family=Outfit:wght@500;600;700;800;900&family=Patrick+Hand&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Shantell+Sans:wght@500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --brand-primary: #0EA5E9;
+  --brand-secondary: #F43F5E;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #F8FAFC;
+  color: #0F172A;
+  font-family: 'Outfit', 'Plus Jakarta Sans', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.font-handwritten {
+  font-family: 'Caveat', 'Patrick Hand', 'Shantell Sans', cursive, sans-serif;
+}
+
+.font-logo {
+  font-family: 'Lilita One', 'Fredoka', 'Outfit', sans-serif;
+}
+
+/* 3D Game Logo Text Effects */
+.logo-text-draw {
+  font-family: 'Lilita One', 'Fredoka', sans-serif;
+  color: #0EA5E9;
+  text-shadow: 
+    0 3px 0 #0284C7,
+    0 6px 0 #0369A1,
+    0 10px 20px rgba(14, 165, 233, 0.25);
+}
+
+.logo-text-spy {
+  font-family: 'Lilita One', 'Fredoka', sans-serif;
+  color: #F43F5E;
+  text-shadow: 
+    0 3px 0 #E11D48,
+    0 6px 0 #BE123C,
+    0 10px 20px rgba(244, 63, 94, 0.25);
+}
+
+/* Small header logo variant */
+.logo-sm-draw {
+  font-family: 'Lilita One', 'Fredoka', sans-serif;
+  color: #0EA5E9;
+  text-shadow: 0 2px 0 #0284C7;
+}
+
+.logo-sm-spy {
+  font-family: 'Lilita One', 'Fredoka', sans-serif;
+  color: #F43F5E;
+  text-shadow: 0 2px 0 #E11D48;
+}
+
+/* Sketchy hand-drawn border effect */
+.sketch-border {
+  border: 2.5px solid #0F172A;
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+}
+
+/* Prevent pull-to-refresh on mobile */
+body {
+  overscroll-behavior: none;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(0,0,0,0.03);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.15);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0,0,0,0.25);
+}
+
+/* Canvas cursor */
+.canvas-pen {
+  cursor: crosshair;
+}
+.canvas-eraser {
+  cursor: cell;
+}
+
+/* Timer ring animation */
+@keyframes timerShrink {
+  from { stroke-dashoffset: 0; }
+  to { stroke-dashoffset: 283; }
+}
+
+.timer-ring {
+  animation: timerShrink linear forwards;
+  transform-origin: center;
+  transform: rotate(-90deg);
+}

@@ -1,0 +1,26 @@
+{
+  "name": "drawspy",
+  "version": "1.0.0",
+  "private": true,
+  "description": "DrawSpy - Multiplayer Drawing & Social Deduction Game",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "concurrently \"pnpm --filter @drawspy/server dev\" \"pnpm --filter @drawspy/web dev\"",
+    "dev:web": "pnpm --filter @drawspy/web dev",
+    "dev:server": "pnpm --filter @drawspy/server dev",
+    "build": "pnpm --filter @drawspy/shared build && pnpm --filter @drawspy/game-engine build && pnpm --filter @drawspy/server build && pnpm --filter @drawspy/web build",
+    "typecheck": "pnpm -r typecheck",
+    "lint": "pnpm -r lint"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "typescript": "^5.4.5"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=9.0.0"
+  }
+}
