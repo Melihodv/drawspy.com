@@ -19,7 +19,15 @@ const ALLOWED_ORIGINS = [
   'http://localhost:3000',
   'https://drawspy.com',
   'https://www.drawspy.com',
+  'https://drawspy-com.vercel.app',
 ];
+
+const isAllowedOrigin = (origin: string | undefined): boolean => {
+  if (!origin) return true;
+  if (ALLOWED_ORIGINS.includes(origin)) return true;
+  if (origin.endsWith('.vercel.app')) return true;
+  return false;
+};
 
 const app = express();
 app.set('trust proxy', 1); // Trust first proxy (Nginx / Cloudflare) so real client IPs are used
@@ -33,7 +41,13 @@ app.use(helmet({
 
 // ─── CORS ─────────────────────────────────────────────────────────────────────
 app.use(cors({
-  origin: ALLOWED_ORIGINS,
+  origin: (origin, callback) => {
+    if (isAllowedOrigin(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true,
 }));
 app.use(express.json({ limit: '10kb' }));
@@ -72,7 +86,13 @@ app.use((_req, res) => {
 // ─── Socket.IO ────────────────────────────────────────────────────────────────
 export const io = new Server<ClientToServerEvents, ServerToClientEvents>(httpServer, {
   cors: {
-    origin: ALLOWED_ORIGINS,
+    origin: (origin, callback) => {
+      if (isAllowedOrigin(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
     credentials: true,
   },
   transports: ['websocket', 'polling'],
