@@ -1,4 +1,4 @@
-export type Language = 'en' | 'tr' | 'fr' | 'de' | 'ar';
+export type Language = 'en' | 'tr' | 'fr' | 'de' | 'es' | 'ar';
 export type Difficulty = 'easy' | 'medium' | 'hard';
 export type Role = 'normal' | 'spy';
 export type PlayerStatus = 'connected' | 'disconnected' | 'reconnecting';
@@ -200,6 +200,7 @@ export interface ServerToClientEvents {
     }) => void;
     turn_ended: (data: {
         playerId: string;
+        didDraw?: boolean;
     }) => void;
     discussion_started: (data: {
         phaseEndsAt: number;
