@@ -2,5 +2,5 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": "nextjs",
   "buildCommand": "pnpm --filter @drawspy/shared build && pnpm --filter @drawspy/game-engine build && pnpm --filter @drawspy/web build",
-  "outputDirectory": "apps/web/.next"
+  "outputDirectory": ".next"
 }
