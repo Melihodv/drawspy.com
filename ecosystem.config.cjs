@@ -9,8 +9,10 @@ module.exports = {
   apps: [
     {
       name: 'drawspy-server',
-      script: './apps/server/dist/index.js',
-      instances: 1, // Socket.IO requires sticky sessions for multi-instance; keep 1 unless using Redis adapter
+      script: 'node_modules/.bin/tsx',
+      args: 'src/index.ts',
+      cwd: './apps/server',
+      instances: 1,
       autorestart: true,
       watch: false,
       max_memory_restart: '512M',
@@ -21,21 +23,6 @@ module.exports = {
         NODE_ENV: 'production',
         PORT: 3001,
       },
-      // Override per environment:
-      // pm2 start ecosystem.config.cjs --env production
-      env_production: {
-        NODE_ENV: 'production',
-        PORT: 3001,
-      },
-      env_development: {
-        NODE_ENV: 'development',
-        PORT: 3001,
-      },
-      // Log config
-      error_file: './logs/drawspy-error.log',
-      out_file: './logs/drawspy-out.log',
-      merge_logs: true,
-      time: true,
     },
   ],
 };
